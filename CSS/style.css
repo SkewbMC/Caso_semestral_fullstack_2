@@ -1,3 +1,263 @@
 /*Esto es un comentario para poder guardar*/
 
 /*hola*/
+
+
+/* ==========================================
+   ESTILOS GLOBALES - INDUSTRIAL SUR
+   ========================================== */
+:root {
+    --color-primario: #1e3a8a; /* Azul industrial oscuro */
+    --color-secundario: #f97316; /* Naranja de alerta/acento */
+    --color-fondo: #f8fafc;
+    --color-texto: #1e293b;
+    --color-blanco: #ffffff;
+    --color-error: #dc2626;
+    --color-exito: #16a34a;
+    --color-borde: #cbd5e1;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   ENCABEZADO Y NAVEGACIÓN
+   ========================================== */
+header, .header-admin {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+header h1, .header-admin h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+header p, .header-admin p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.nav-principal {
+    background-color: #0f172a;
+    padding: 0.8rem;
+}
+
+.nav-principal ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.nav-principal a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-principal a:hover, .nav-principal a.activo {
+    background-color: var(--color-secundario);
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL Y SECCIONES
+   ========================================== */
+.contenedor-principal {
+    flex: 1;
+    max-width: 1200px;
+    width: 92%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.seccion-dashboard {
+    background: var(--color-blanco);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.seccion-dashboard h2 {
+    color: var(--color-primario);
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--color-fondo);
+    padding-bottom: 0.5rem;
+}
+
+/* ==========================================
+   TARJETAS DE SOLICITUD
+   ========================================== */
+.grid-solicitudes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta-solicitud {
+    background: #f1f5f9;
+    border-left: 5px solid var(--color-primario);
+    padding: 1.2rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,50,100,0.05);
+}
+
+.tarjeta-solicitud h3 {
+    font-size: 1.15rem;
+    color: var(--color-primario);
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta-solicitud p {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ==========================================
+   ESTILOS DE FORMULARIOS E INPUTS
+   (Diseño simple, claro y adaptado a usuarios no técnicos)
+   ========================================== */
+.contenedor-formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.grupo-input {
+    margin-bottom: 1.2rem;
+}
+
+.grupo-input label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    color: var(--color-texto);
+}
+
+.input-estandar {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+    border: 2px solid var(--color-borde);
+    border-radius: 6px;
+    background-color: var(--color-blanco);
+    transition: border-color 0.2s;
+}
+
+.input-estandar:focus {
+    outline: none;
+    border-color: var(--color-primario);
+}
+
+/* ==========================================
+   BOTONES GRANDES Y CLAROS
+   ========================================== */
+.btn-principal {
+    display: block;
+    width: 100%;
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 1rem;
+    font-size: 1.15rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-principal:hover {
+    background-color: #ea580c;
+}
+
+.btn-principal:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================
+   MENSAJES DE ERROR Y ESTADOS
+   ========================================== */
+.mensaje-error {
+    color: var(--color-error);
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+    font-weight: 600;
+    min-height: 1.2rem;
+}
+
+.mensaje-exito {
+    color: var(--color-exito);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.estado-reportada {
+    background-color: #fef08a;
+    color: #854d0e;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+   ========================================== */
+.footer-informativo {
+    background-color: #0f172a;
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.footer-informativo p + p {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ==========================================
+   MEDIA QUERIES PARA DISPOSITIVOS MÓVILES
+   ========================================== */
+@media (max-width: 768px) {
+    .nav-principal ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .seccion-dashboard {
+        padding: 1.2rem;
+    }
+}

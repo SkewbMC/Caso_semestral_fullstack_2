@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Jefatura | Industrial Sur</title>
+    <!-- Aquí enlazamos tu futuro archivo CSS -->
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+    <!-- Encabezado principal de la página -->
+    <header class="header-admin">
+        <h1>Industrial Sur - Control de Activos</h1>
+        <p>Bienvenido, Jefe de Mantenimiento</p>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav class="nav-principal">
+        <ul>
+            <li><a href="dashboard.html" class="activo">Panel Principal</a></li>
+            <li><a href="#">Inventario de Activos</a></li>
+            <li><a href="#">Reportes</a></li>
+            <li><a href="index.html">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="contenedor-principal">
+        
+        <!-- Sección 1: Panel visual de solicitudes entrantes -->
+        <section class="seccion-dashboard">
+            <h2>Solicitudes Pendientes de Arrendatarios</h2>
+            <div class="grid-solicitudes">
+                <!-- Usamos 'article' para cada tarjeta de solicitud independiente -->
+                <article class="tarjeta-solicitud">
+                    <h3>Falla Eléctrica Nave B</h3>
+                    <p><strong>Reportado por:</strong> Arrendatario 12</p>
+                    <p><strong>Estado:</strong> <span class="estado-reportada">Reportada</span></p>
+                    <p>Sin luz en el sector de carga.</p>
+                </article>
+
+                <article class="tarjeta-solicitud">
+                    <h3>Filtración Sistema Climatización</h3>
+                    <p><strong>Reportado por:</strong> Arrendatario 05</p>
+                    <p><strong>Estado:</strong> <span class="estado-reportada">Reportada</span></p>
+                    <p>Goteo constante en oficina central.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección 2: Formulario para asignar tareas a los técnicos -->
+        <section class="seccion-dashboard">
+            <h2>Asignar Orden de Trabajo</h2>
+            <!-- Este formulario es el que validaremos luego con JS -->
+            <div class="contenedor-formulario">
+                <form id="form-asignacion">
+                    
+                    <div class="grupo-input">
+                        <label for="solicitud">Seleccionar Solicitud:</label>
+                        <select id="solicitud" class="input-estandar">
+                            <option value="">-- Elija una solicitud --</option>
+                            <option value="1">Falla Eléctrica Nave B</option>
+                            <option value="2">Filtración Sistema Climatización</option>
+                        </select>
+                        <p class="mensaje-error" id="error-solicitud"></p>
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="tecnico">Asignar a Técnico:</label>
+                        <select id="tecnico" class="input-estandar">
+                            <option value="">-- Elija un técnico disponible --</option>
+                            <option value="t1">Juan Pérez (Eléctrico)</option>
+                            <option value="t2">Pedro Gómez (Climatización)</option>
+                        </select>
+                        <p class="mensaje-error" id="error-tecnico"></p>
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="prioridad">Prioridad:</label>
+                        <select id="prioridad" class="input-estandar">
+                            <option value="alta">Alta</option>
+                            <option value="media">Media</option>
+                            <option value="baja">Baja</option>
+                        </select>
+                    </div>
+
+                    <!-- Botón principal grande como pide el caso -->
+                    <button type="submit" class="btn-principal" id="btn-asignar">Generar Orden de Trabajo</button>
+                    <!-- Mensaje de éxito simulado -->
+                    <p class="mensaje-exito" id="mensaje-exito" style="display: none;">¡Orden asignada correctamente!</p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer-informativo">
+        <p>&copy; 2024 Parque Industrial Sur - Sistema de Gestión Integrado</p>
+        <p>Soporte: soporte@industrialsur.cl</p>
+    </footer>
+
+    <!-- Aquí enlazamos tu futuro archivo JS para las validaciones -->
+    <script src="../JS/main.js"></script>
+</body>
+</html>
