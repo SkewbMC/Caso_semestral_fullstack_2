@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Sur - Panel Móvil del Técnico</title>
+    <!-- Hoja de estilos externa -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <!-- Encabezado con identificación clara del operario -->
+    <header>
+        <h1>Industrial Sur</h1>
+        <p>Control de Activos - Vista Técnico</p>
+        <div>
+            <span>👤 Operario: Juan Pérez</span>
+        </div>
+    </header>
+
+    <!-- Navegación simple e interconectada -->
+    <nav>
+        <ul>
+            <li><a href="#ordenes">Órdenes Asignadas</a></li>
+            <li><a href="#reportar">Reportar Trabajo</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+
+        <!-- Sección de Órdenes de Trabajo Asignadas -->
+        <section id="ordenes">
+            <h2>Órdenes de Trabajo Asignadas</h2>
+
+            <!-- Tarjeta 1: Grúa Pórtico -->
+            <article class="tarjeta-solicitud">
+                <header>
+                    <h3>Orden #OT-104 - Grúa Pórtico 1 (ACT002)</h3>
+                    <p><strong>Ubicación:</strong> Nave B</p>
+                </header>
+                <p><strong>Tipo de Mantenimiento:</strong> Correctivo (MTO02)</p>
+                <p><strong>Detalle de la falla:</strong> Obstrucción en el sistema mecánico de elevación.</p>
+                
+                <button type="button" class="btn-principal" onclick="seleccionarOrden('OT-104')">
+                    Marcar como finalizado
+                </button>
+            </article>
+
+            <!-- Tarjeta 2: Subestación Eléctrica -->
+            <article class="tarjeta-solicitud">
+                <header>
+                    <h3>Orden #OT-105 - Subestación Eléctrica 1 (ACT001)</h3>
+                    <p><strong>Ubicación:</strong> Nave A</p>
+                </header>
+                <p><strong>Tipo de Mantenimiento:</strong> Preventivo (MTO01)</p>
+                <p><strong>Detalle de la falla:</strong> Inspección mensual de transformadores y lectura de niveles.</p>
+                
+                <button type="button" class="btn-principal" onclick="seleccionarOrden('OT-105')">
+                    Marcar como finalizado
+                </button>
+            </article>
+        </section>
+
+        <!-- Sección para Reportar Comentarios Finales -->
+        <section id="reportar">
+            <h2>Reporte de Finalización de Trabajo</h2>
+
+            <form class="contenedor-formulario" id="form-tecnico" action="#" method="POST" novalidate>
+                
+                <!-- Input Cód. Orden de Trabajo -->
+                <label for="codigo-ot">Código de Orden de Trabajo:</label>
+                <input 
+                    type="text" 
+                    id="codigo-ot" 
+                    name="codigoOT" 
+                    class="input-estandar" 
+                    placeholder="Ej: OT-104" 
+                    required
+                >
+                <p class="mensaje-error"></p>
+
+                <!-- Select de Estado -->
+                <label for="estado-trabajo">Estado Final:</label>
+                <select id="estado-trabajo" name="estadoTrabajo" class="input-estandar" required>
+                    <option value="">-- Seleccionar Estado --</option>
+                    <option value="Finalizada">Finalizada</option>
+                    <option value="En evaluacion">Requiere repuesto adicional</option>
+                </select>
+                <p class="mensaje-error"></p>
+
+                <!-- Textarea de Comentarios -->
+                <label for="comentarios-tecnico">Comentarios Finales y Novedades:</label>
+                <textarea 
+                    id="comentarios-tecnico" 
+                    name="comentarios" 
+                    class="input-estandar" 
+                    rows="4" 
+                    placeholder="Escriba brevemente las reparaciones realizadas..." 
+                    required
+                ></textarea>
+                <p class="mensaje-error"></p>
+
+                <!-- Botón Principal de Envío -->
+                <button type="submit" class="btn-principal">
+                    Enviar Reporte Digital
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Pie de página informativo -->
+    <footer>
+        <p><strong>Industrial Sur S.A.</strong> - Parque Industrial San Bernardo</p>
+        <p>Soporte Técnico Terreno: 📞 +56 9 1234 5678</p>
+        <p><small>&copy; 2026 Sistema Digital de Control de Activos. Todos los derechos reservados.</small></p>
+    </footer>
+
+    <!-- Scripts para validaciones de formularios -->
+    <script src="../js/tecnico.js"></script>
+</body>
+</html>
