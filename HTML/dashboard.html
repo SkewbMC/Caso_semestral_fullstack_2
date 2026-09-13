@@ -4,104 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Jefatura | Industrial Sur</title>
-    <!-- Aquí enlazamos tu futuro archivo CSS -->
+    <!-- 1. Bootstrap CSS (Framework) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 2. Tu CSS Personalizado (Para mantener la nota y tus estilos base) -->
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100 bg-light">
 
-    <!-- Encabezado principal de la página -->
-    <header class="header-admin">
-        <h1>Industrial Sur - Control de Activos</h1>
-        <p>Bienvenido, Jefe de Mantenimiento</p>
+    <!-- Encabezado principal -->
+    <header class="bg-dark text-white text-center py-4 shadow-sm">
+        <h1 class="fw-bold">Industrial Sur - Control de Activos</h1>
+        <p class="mb-0 fs-5">Panel de Jefatura de Mantenimiento</p>
     </header>
 
-    <!-- Barra de navegación -->
-    <nav class="nav-principal">
-        <ul>
-            <li><a href="dashboard.html" class="activo">Panel Principal</a></li>
-            <li><a href="#">Inventario de Activos</a></li>
-            <li><a href="#">Reportes</a></li>
-            <li><a href="index.html">Cerrar Sesión</a></li>
+    <!-- Barra de navegación tipo Tabs de Bootstrap -->
+    <nav class="bg-white border-bottom py-2 shadow-sm">
+        <ul class="nav justify-content-center">
+            <li class="nav-item"><a href="dashboard.html" class="nav-link active fw-bold text-primary">Panel Jefatura</a></li>
+            <li class="nav-item"><a href="arrendatario.html" class="nav-link text-dark">Vista Arrendatario</a></li>
+            <li class="nav-item"><a href="tecnico.html" class="nav-link text-dark">Vista Técnico</a></li>
         </ul>
     </nav>
 
-    <!-- Contenido principal -->
-    <main class="contenedor-principal">
+    <!-- Contenido principal (Usamos Container para alinear al centro) -->
+    <main class="container my-5 flex-grow-1">
         
-        <!-- Sección 1: Panel visual de solicitudes entrantes -->
-        <section class="seccion-dashboard">
-            <h2>Solicitudes Pendientes de Arrendatarios</h2>
-            <div class="grid-solicitudes">
-                <!-- Usamos 'article' para cada tarjeta de solicitud independiente -->
-                <article class="tarjeta-solicitud">
-                    <h3>Falla Eléctrica Nave B</h3>
-                    <p><strong>Reportado por:</strong> Arrendatario 12</p>
-                    <p><strong>Estado:</strong> <span class="estado-reportada">Reportada</span></p>
-                    <p>Sin luz en el sector de carga.</p>
-                </article>
-
-                <article class="tarjeta-solicitud">
-                    <h3>Filtración Sistema Climatización</h3>
-                    <p><strong>Reportado por:</strong> Arrendatario 05</p>
-                    <p><strong>Estado:</strong> <span class="estado-reportada">Reportada</span></p>
-                    <p>Goteo constante en oficina central.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- Sección 2: Formulario para asignar tareas a los técnicos -->
-        <section class="seccion-dashboard">
-            <h2>Asignar Orden de Trabajo</h2>
-            <!-- Este formulario es el que validaremos luego con JS -->
-            <div class="contenedor-formulario">
-                <form id="form-asignacion">
+        <!-- Usamos el sistema de Grid de Bootstrap (Row y Col) para dividir la pantalla en PC -->
+        <div class="row g-4">
+            
+            <!-- COLUMNA IZQUIERDA: Visor de Solicitudes -->
+            <div class="col-lg-6">
+                <section class="bg-white p-4 rounded shadow-sm h-100 border-top border-primary border-4">
+                    <h2 class="h4 text-primary mb-4 border-bottom pb-2">Solicitudes Pendientes</h2>
                     
-                    <div class="grupo-input">
-                        <label for="solicitud">Seleccionar Solicitud:</label>
-                        <select id="solicitud" class="input-estandar">
-                            <option value="">-- Elija una solicitud --</option>
-                            <option value="1">Falla Eléctrica Nave B</option>
-                            <option value="2">Filtración Sistema Climatización</option>
-                        </select>
-                        <p class="mensaje-error" id="error-solicitud"></p>
-                    </div>
+                    <!-- Tarjeta 1: Grúa Pórtico (Falla Correctiva) -->
+                    <article class="card mb-3 shadow-sm border-start border-warning border-4">
+                        <div class="card-body">
+                            <h3 class="h5 fw-bold card-title">Falla en Grúa Pórtico 1 (ACT002)</h3>
+                            <p class="card-text mb-1"><strong>Ubicación:</strong> Nave B</p>
+                            <p class="card-text mb-2 text-muted">Obstrucción en el sistema mecánico de elevación.</p>
+                            <span class="badge bg-warning text-dark">Mantenimiento Correctivo (MTO02)</span>
+                        </div>
+                    </article>
 
-                    <div class="grupo-input">
-                        <label for="tecnico">Asignar a Técnico:</label>
-                        <select id="tecnico" class="input-estandar">
-                            <option value="">-- Elija un técnico disponible --</option>
-                            <option value="t1">Juan Pérez (Eléctrico)</option>
-                            <option value="t2">Pedro Gómez (Climatización)</option>
-                        </select>
-                        <p class="mensaje-error" id="error-tecnico"></p>
-                    </div>
-
-                    <div class="grupo-input">
-                        <label for="prioridad">Prioridad:</label>
-                        <select id="prioridad" class="input-estandar">
-                            <option value="alta">Alta</option>
-                            <option value="media">Media</option>
-                            <option value="baja">Baja</option>
-                        </select>
-                    </div>
-
-                    <!-- Botón principal grande como pide el caso -->
-                    <button type="submit" class="btn-principal" id="btn-asignar">Generar Orden de Trabajo</button>
-                    <!-- Mensaje de éxito simulado -->
-                    <p class="mensaje-exito" id="mensaje-exito" style="display: none;">¡Orden asignada correctamente!</p>
-                </form>
+                    <!-- Tarjeta 2: Subestación Eléctrica (Mantenimiento Preventivo) -->
+                    <article class="card mb-3 shadow-sm border-start border-info border-4">
+                        <div class="card-body">
+                            <h3 class="h5 fw-bold card-title">Inspección Subestación 1 (ACT001)</h3>
+                            <p class="card-text mb-1"><strong>Ubicación:</strong> Nave A</p>
+                            <p class="card-text mb-2 text-muted">Inspección mensual de transformadores y lectura de niveles.</p>
+                            <span class="badge bg-info text-dark">Mantenimiento Preventivo (MTO01)</span>
+                        </div>
+                    </article>
+                </section>
             </div>
-        </section>
 
+            <!-- COLUMNA DERECHA: Formulario de Asignación -->
+            <div class="col-lg-6">
+                <section class="bg-white p-4 rounded shadow-sm h-100 border-top border-success border-4">
+                    <h2 class="h4 text-success mb-4 border-bottom pb-2">Asignar Orden de Trabajo</h2>
+                    
+                    <!-- Formulario de Bootstrap integrado con tus clases -->
+                    <form id="form-asignacion" novalidate>
+                        
+                        <div class="mb-3">
+                            <label for="solicitud" class="form-label fw-bold text-dark">Seleccionar Solicitud:</label>
+                            <select id="solicitud" class="form-select form-select-lg input-estandar" required>
+                                <option value="">-- Elija una solicitud --</option>
+                                <option value="1">Falla en Grúa Pórtico 1 (ACT002)</option>
+                                <option value="2">Inspección Subestación 1 (ACT001)</option>
+                            </select>
+                            <p class="mensaje-error text-danger small mt-1" id="error-solicitud"></p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tecnico" class="form-label fw-bold text-dark">Asignar a Técnico:</label>
+                            <select id="tecnico" class="form-select form-select-lg input-estandar" required>
+                                <option value="">-- Elija un técnico disponible --</option>
+                                <option value="t1">Juan Pérez (Mecánico)</option>
+                                <option value="t2">Pedro Gómez (Eléctrico)</option>
+                            </select>
+                            <p class="mensaje-error text-danger small mt-1" id="error-tecnico"></p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="prioridad" class="form-label fw-bold text-dark">Prioridad:</label>
+                            <select id="prioridad" class="form-select form-select-lg input-estandar">
+                                <option value="alta">Alta / Emergencia (MTO04)</option>
+                                <option value="media">Media / Correctivo</option>
+                                <option value="baja">Baja / Preventivo</option>
+                            </select>
+                        </div>
+
+                        <!-- Tu botón personalizado gigante -->
+                        <button type="submit" class="btn btn-principal w-100 btn-lg">Generar Orden Digital</button>
+                        <p class="mensaje-exito text-success text-center mt-3 fw-bold" id="mensaje-exito" style="display: none;">¡Orden asignada correctamente al técnico!</p>
+                    </form>
+                </section>
+            </div>
+            
+        </div>
     </main>
 
     <!-- Pie de página -->
-    <footer class="footer-informativo">
-        <p>&copy; 2024 Parque Industrial Sur - Sistema de Gestión Integrado</p>
-        <p>Soporte: soporte@industrialsur.cl</p>
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0 fw-bold">&copy; 2026 Parque Industrial Sur</p>
+        <p class="small text-muted mb-0">Sistema de Control de Activos</p>
     </footer>
 
-    <!-- Aquí enlazamos tu futuro archivo JS para las validaciones -->
+    <!-- Tu JavaScript para las validaciones -->
     <script src="../JS/main.js"></script>
 </body>
 </html>
